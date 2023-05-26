@@ -13,6 +13,7 @@ The movie booked by the user will be stored in database and is retrived and show
 
 ## Website's Live URL  
   https://book-your-show-ui.onrender.com/  
+  (or you can just click on above image will redirect you to the website)
 
 
 ## Technologies that are used.
@@ -32,5 +33,6 @@ The movie booked by the user will be stored in database and is retrived and show
 -   I used Canva for Background Image
 
 ##
+<h4 align="center">Made with ❤️ from Anish</h4>
 <h4 align="center">Thank You</h4>
-##
+
