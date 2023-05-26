@@ -31,5 +31,6 @@ The movie booked by the user will be stored in database and is retrived and show
 ## aditionally 
 -   I used Canva for Background Image
 
-![Alt project_screeshot](https://drive.google.com/file/d/1Ux-F_xw_A6dJu5FEVQV948dpvKze4OIx/view?usp=sharing)
-
+##
+<h4 align="center">Thank You</h4>
+##
