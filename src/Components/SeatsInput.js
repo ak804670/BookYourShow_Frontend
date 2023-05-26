@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/seats.css";
 
 const SeatsInput = ({
@@ -9,22 +9,28 @@ const SeatsInput = ({
   text,
   index,
 }) => {
-  //changing the seats according to user input
-  const change_seats = (e) => {
-   
-    changeNoOfSeats({ ...noOfSeat, [e.target.name]: Number(e.target.value) });
+  // Using  state to manage the input value
+  const [inputValue, setInputValue] = useState( "");
 
-    //setting seats in localsorage
+  useEffect(() => {
+    // Update the input value whenever noOfSeat[text] changes
+    setInputValue(noOfSeat?.[text] || "");
+  }, [noOfSeat?.[text] ]);
+
+  // this function will  handle the change in seat input and update the state and local storage
+  const change_seats = (e) => {
+    const newValue = e.target.value;
+    setInputValue(newValue);
+    // this will update the noOfSeat object with the new seat value
+    changeNoOfSeats({ ...noOfSeat, [e.target.name]: Number(newValue) });
+    // store the updated noOfSeat object in local storage
     window.localStorage.setItem(
       "seats",
-      JSON.stringify({
-        ...noOfSeat,
-        [e.target.name]: Number(e.target.value),
-      })
+      JSON.stringify({ ...noOfSeat, [e.target.name]: Number(newValue) })
     );
   };
 
-  //highlighting the seat
+  // help in the selection of seats 
   const handleChecked = (text) => {
     changeSeats(text);
   };
@@ -32,14 +38,17 @@ const SeatsInput = ({
   return (
     <div
       name={text}
+      // set the class name based on whether the seat is selected or not
       className={`form-check-label seats ${
         seat === text ? "active" : "inactive"
       }`}
       id={`${index}text`}
       onClick={() => {
         handleChecked(text, index);
-      }}>
+      }}
+    >
       <span className={"text"}>{text}</span>
+      
       <input
         type="number"
         className="seats-input"
@@ -49,7 +58,7 @@ const SeatsInput = ({
         id={`${index}input`}
         max="30"
         onChange={change_seats}
-       
+        value={inputValue}
       />
     </div>
   );
